@@ -1,0 +1,44 @@
+{
+  "name": "frontend",
+  "version": "0.1.0",
+  "private": true,
+  "proxy": "http://localhost:8000",
+  "dependencies": {
+    "@types/jest": "^19.2.4",
+    "@types/jwt-decode": "^2.2.1",
+    "@types/moment-range": "^3.0.1",
+    "@types/node": "^7.0.31",
+    "@types/react": "^15.6.0",
+    "@types/react-dom": "^15.5.1",
+    "@types/react-modal": "^1.6.8",
+    "@types/react-redux": "^4.4.45",
+    "@types/react-router-dom": "^4.0.4",
+    "@types/react-tabs": "^1.0.1",
+    "@types/redux-thunk": "^2.1.0",
+    "axios": "^0.16.2",
+    "fullcalendar": "^3.4.0",
+    "jquery": "^3.2.1",
+    "jwt-decode": "^2.2.0",
+    "moment": "^2.18.1",
+    "moment-range": "^3.0.3",
+    "react": "^15.6.1",
+    "react-day-picker": "^6.1.0",
+    "react-dom": "^15.6.1",
+    "react-modal": "^2.2.2",
+    "react-redux": "^5.0.5",
+    "react-router-dom": "^4.1.1",
+    "react-select": "^1.0.0-rc.5",
+    "react-tabs": "^1.1.0",
+    "redux": "^3.7.1",
+    "redux-thunk": "^2.2.0"
+  },
+  "devDependencies": {
+    "react-scripts-ts": "2.3.2"
+  },
+  "scripts": {
+    "start": "react-scripts-ts start",
+    "build": "react-scripts-ts build",
+    "test": "react-scripts-ts test --env=jsdom",
+    "eject": "react-scripts-ts eject"
+  }
+}
