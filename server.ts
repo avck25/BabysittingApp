@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use('/auth', authRouter);
-app.use('/api', checkToken, router);
+app.use('/api', router);
 
 const port = process.env.PORT || 8000;
 app.listen(port, () => console.log(`server is running on port ${port}`));

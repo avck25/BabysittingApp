@@ -1,8 +1,10 @@
 import * as nodemailer from 'nodemailer';
 import * as crypto from 'crypto';
-import * as bcrypt from 'bcrypt';
+import * as bcrypt from 'bcryptjs';
+import * as moment from 'moment'
+import { FromTo } from '../types/fromTo';
 
-function verifyEmail(emailAddress : string, htmlMessage : string) : string {
+function sendEmail(emailAddress: string, htmlMessage: string): string {
     let error = 'hello';
     let transporter = nodemailer.createTransport({
         service: 'gmail',
@@ -18,9 +20,9 @@ function verifyEmail(emailAddress : string, htmlMessage : string) : string {
         html: htmlMessage
     };
 
-    transporter.sendMail(mailOptions, (err : any, info : any) => {
-       
-        if (err) {}
+    transporter.sendMail(mailOptions, (err: any, info: any) => {
+
+        if (err) { }
 
     });
     if (error) {
@@ -31,14 +33,23 @@ function verifyEmail(emailAddress : string, htmlMessage : string) : string {
 
 }
 
-function createRandomToken(amountOfBytes : number) {
-    return crypto
-        .randomBytes(amountOfBytes)
-        .toString('hex');
+function createRandomToken(amountOfBytes: number) {
+    return crypto.randomBytes(amountOfBytes).toString('hex');
 }
 
-function comparePassword(password: string, enteredPassword: string) {
-    return bcrypt.compare(enteredPassword, password);
+async function comparePassword(password: string, hash: string) {
+
+    let theresult: boolean = await bcrypt.compare(password, hash);
+    return theresult;
 }
 
-export {verifyEmail, createRandomToken, comparePassword}
+function getHoursAndMinutes(fromTo: FromTo) {
+
+    let result = moment(fromTo.to, "hh:mm:ss").diff(moment(fromTo.from, "hh:mm:ss"), 'minutes')
+
+    fromTo.hours = Math.floor(result / 60);;
+    fromTo.minutes = result % 60;
+    return fromTo;
+}
+
+export { sendEmail, createRandomToken, comparePassword, getHoursAndMinutes }

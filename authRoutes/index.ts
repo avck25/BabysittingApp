@@ -1,11 +1,11 @@
 
 import * as express from 'express-promise-router';
 const authRouter = express();
-import companies from './companies';
+import owner from './owner';
+import login from './login';
 
-
-authRouter.use('/companies', companies);
-
+authRouter.use('/owner', owner);
+authRouter.use('/login', login);
 
 export { authRouter }
 
