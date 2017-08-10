@@ -8,38 +8,45 @@ import * as jwtDecode from 'jwt-decode';
 
 export default class App extends React.Component<any, any> {
 
-  checkWebToken = (token: any) => {
+  /*checkWebToken = (token: any) => {
     const jwt: any = jwtDecode(token);
 
     if (jwt.exp < Date.now() / 1000) {
       return true;
     }
     return false;
-  }
+  }*/
 
-  componentWillMount() {
-    if (localStorage.getItem('authToken') !== null) {
-      const token: any = localStorage.getItem('authToken');
-      if (this.checkWebToken(token)) {
-        localStorage.removeItem('authToken');
-      }
-    }
-
-  }
+  /* componentWillMount() {
+     if (localStorage.getItem('authToken') !== null) {
+       const token: any = localStorage.getItem('authToken');
+       if (this.checkWebToken(token)) {
+         localStorage.removeItem('authToken');
+       }
+     }
+ 
+   }*/
 
 
   render() {
 
     return (
-      <div></div>
+      <div>
+        <Router>
+          <div>
+            <Route />
+          </div>
+        </Router>
+
+      </div>
     );
   }
 }
-function mapStateToProps(state: any) {
+/*function mapStateToProps(state: any) {
   return {
     renderNav: state.renderNav,
   }
-}
+}*/
 
 
 

@@ -24,15 +24,10 @@ export default class LogIn extends React.Component<any, any> {
 
     }
 
-    checkError = () => {
-        return this.state.hasError.get(this.name);
-    }
 
 
     render() {
-        let inputs = Object.keys(this.state).map((v: any) => {
-            return <Input name={v} hasError={this.checkError().bind(this)} />
-        });
+
         return (
             <div>
                 <form action="">
