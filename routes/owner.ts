@@ -25,8 +25,15 @@ router.post('/addOwner', async (req: Request, res: Response) => {
     }
 });
 
-router.get('/getClients/:id', async (req: Request, res: Response) => {
-    let clients: Array<Client> = await db.ownerTasks.getClients(req.params.id);
+router.get('/getAllClients/:id', async (req: Request, res: Response) => {
+    let clients: Array<Client> = await db.ownerTasks.getAllClients(/*req.userId*/req.params.id);
+
+    res.json(clients);
+
+});
+
+router.get('/getCurrentClients/:id', async (req: Request, res: Response) => {
+    let clients: Array<Client> = await db.ownerTasks.getCurrentClients(/*req.userId*/req.params.id);
 
     res.json(clients);
 
@@ -47,6 +54,23 @@ router.post('/updateOwner', async (req: Request, res: Response) => {
         res.json({ success: false, message: response });
     }
 });
+
+router.post('/ownerMissedDays', async (req: Request, res: Response) => {
+
+    let response = await db.calculationTasks.getClientextraMinutes(/*req.userId*/req.body.id, req.body.from, req.body.to);
+
+    res.json({ response });
+
+});
+
+router.get('/calculate/:id/:from/:to', async (req: Request, res: Response) => {
+
+    let response = await utils.utilities.calculateClients(req.params.id, req.params.from, req.params.to);
+    res.json(response);
+
+});
+
+
 
 
 

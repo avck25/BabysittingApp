@@ -13,9 +13,14 @@ async function getClient(id: number) {
     return client;
 }
 
+function updateClient(id: number, fields: object) {
+    return knex('clients').where('id', id).update(fields).catch((err: any) => err.code);
+}
+
 
 export {
     addClient,
-    getClient
+    getClient,
+    updateClient
 
 }

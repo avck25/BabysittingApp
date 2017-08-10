@@ -23,9 +23,14 @@ function updateOwner(id: number, fields: object) {
     return knex('owner').where('id', id).update(fields).catch((err: any) => err.code);
 }
 
-async function getClients(ownerId: number) {
+async function getCurrentClients(ownerId: number) {
+    return await knex('clients').select().where({ 'ownerId': ownerId, 'archived': 0 });
+}
+
+async function getAllClients(ownerId: number) {
     return await knex('clients').select().where('ownerId', ownerId);
 }
+
 
 async function getOwner(id: number) {
 
@@ -37,7 +42,8 @@ async function getOwner(id: number) {
 export {
     addOwner,
     verifyTempToken,
-    getClients,
+    getCurrentClients,
     getOwner,
-    updateOwner
+    updateOwner,
+    getAllClients
 }
