@@ -2,30 +2,29 @@ import * as React from 'react';
 import { InputProps } from './inputPropAndStateTypes';
 require('./input.css');
 
-export default class Input extends React.Component<InputProps, any> {
-    constructor() {
-        super();
-        this.state = {
-            error: false,
-            errorMessage: this.props.errorMessage
-        }
-    }
+const Input = ({
+    input,
+    placeholder,
+    type,
+    meta: { touched, error, warning }
+  }: any) => {
+    console.log(touched);
+    let hasError = error ? 'form-control-danger' : '';
+    console.log(hasError);
 
-    componentDidMount() {
-        let state = Object.assign({}, this.state);
-        state.error = this.props.hasError;
-        this.setState(state);
+    return (<div>
+        <label htmlFor={placeholder} className="control-label col-sm-2">
+            {placeholder}
+        </label>
+        <input id={placeholder} {...input} placeholder={placeholder} type={type} className={`form-control col-sm-4 align-middle ${hasError}`} />
+        {touched &&
+            ((error &&
+                <h6 className="text-danger text-capitalize">
+                    {error}
+                </h6>))}
+    </div>);
 
-    }
-    render() {
-        let inputClassName = this.state.error ? 'has-danger' : '';
-        return (
-            <div>
-                <input
-                    type={this.props.type}
-                    className={`form-control ${inputClassName}`}
-                />
-            </div>
-        );
-    }
 }
+
+
+export default Input;

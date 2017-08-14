@@ -1,15 +1,8 @@
 import { combineReducers } from 'redux';
-import validate from './validate';
-import validateEmailPassword from './validateEmailPassword';
-import renderNav from './renderNav';
-import appointments from './appointmentReducer/appointmentReducer';
-
+import { reducer as formReducer } from 'redux-form'
 
 const rootReducer = combineReducers({
-    validateEmailPassword,
-    validate,
-    renderNav,
-    appointments
+    form: formReducer
 });
 
 export default rootReducer;

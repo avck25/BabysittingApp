@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
+import LogIn from './components/screens/LoginScreen';
+import SignUp from './components/screens/SignUpScreen';
 
 import * as jwtDecode from 'jwt-decode';
 
@@ -33,8 +35,9 @@ export default class App extends React.Component<any, any> {
     return (
       <div>
         <Router>
-          <div>
-            <Route />
+          <div className="container">
+            <Route exact path="/" component={LogIn} />
+            <Route exact path="/signUp" component={SignUp} />
           </div>
         </Router>
 

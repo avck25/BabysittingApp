@@ -19,7 +19,8 @@ export interface InputProps {
     browserDefault?: boolean
     onLabel?: string
     offLabel?: string
-    onChange?: any
+    onChange: any
+    onBlur: any
     options?: any
     value?: string
 
