@@ -9,9 +9,9 @@ import { Request, Response } from 'express';
 
 
 router.post('/addHours', async (req: Request, res: Response) => {
-    let clienthours: ClientHours = req.body;
+    let clientHours: ClientHours = req.body;
     //client.ownerId = req.userId;
-    let id = await db.hourTasks.addHours(clienthours);
+    let id = await db.hourTasks.addHours(clientHours);
     if (id) {
         res.json({ success: true })
     } else {

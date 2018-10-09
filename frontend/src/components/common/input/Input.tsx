@@ -4,24 +4,29 @@ require('./input.css');
 
 const Input = ({
     input,
-    placeholder,
+    id,
     type,
+    label,
     meta: { touched, error, warning }
+
   }: any) => {
-    console.log(touched);
-    let hasError = error ? 'form-control-danger' : '';
-    console.log(hasError);
+
+
+
 
     return (<div>
-        <label htmlFor={placeholder} className="control-label col-sm-2">
-            {placeholder}
-        </label>
-        <input id={placeholder} {...input} placeholder={placeholder} type={type} className={`form-control col-sm-4 align-middle ${hasError}`} />
+
+
+        <input id={id} {...input} type={type} />
+        <label htmlFor={id}>{id}</label>
+
         {touched &&
             ((error &&
-                <h6 className="text-danger text-capitalize">
+                <h6 className="red-text text-lighten-2 text-capitalize">
+
                     {error}
                 </h6>))}
+
     </div>);
 
 }

@@ -3,6 +3,10 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import LogIn from './components/screens/LoginScreen';
 import SignUp from './components/screens/SignUpScreen';
+import VerifyToken from './components/screens/VerifyToken';
+import AddClients from './components/screens/AddClients';
+import Times from './components/common/time/Times';
+require('./index.css');
 
 import * as jwtDecode from 'jwt-decode';
 
@@ -37,7 +41,10 @@ export default class App extends React.Component<any, any> {
         <Router>
           <div className="container">
             <Route exact path="/" component={LogIn} />
-            <Route exact path="/signUp" component={SignUp} />
+            <Route path="/signUp" component={SignUp} />
+            <Route path="/verifytoken/:token" component={VerifyToken} />
+            <Route path="/addClients" component={AddClients} />
+            <Route path="/addTime" component={Times} />
           </div>
         </Router>
 

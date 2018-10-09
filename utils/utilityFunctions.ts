@@ -9,7 +9,7 @@ import { FromTo } from '../types/fromTo';
 import { ClientHours } from '../types/clienthours';
 let twilioClient = require('twilio')(process.env.TWILIO_SID, process.env.TWILIO_AUTH_TOKEN);
 
-function sendEmail(emailAddress: string, htmlMessage: string): string {
+function sendEmail(emailAddress: string, htmlMessage: string) {
     let error = 'hello';
     let transporter = nodemailer.createTransport({
         service: 'gmail',
@@ -27,11 +27,11 @@ function sendEmail(emailAddress: string, htmlMessage: string): string {
 
     transporter.sendMail(mailOptions, (err: any, info: any) => {
 
-        if (err) { }
+        if (err) { console.log(err) }
 
     });
     if (error) {
-        return 'error';
+        return 'there was an error';
     } else {
         return 'sent';
     }

@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import Input from '../common/input/Input';
 import MyForm from '../common/form/Form';
 import { isPristine, isSubmitting, Field, reduxForm } from 'redux-form';
-require('../../index.css');
+
 
 interface Errors {
     userName?: string;
@@ -45,9 +45,9 @@ export default class LogIn extends React.Component<any, any> {
     }
 
     register = () => {
-        let state = Object.assign({}, this.state);
-        state.redirect = <Redirect to={'/signUp'} />
-        this.setState(state);
+        let newState: any = Object.assign({}, this.state);
+        newState.redirect = <Redirect to={'/signUp'} />
+        this.setState(newState);
     }
 
 
@@ -55,26 +55,38 @@ export default class LogIn extends React.Component<any, any> {
     render() {
 
         return (
-            <div className="">
-                <div className="row justify-content-center align-self-center my-auto">
-                    <div className="col-sm-6">
-                        <div className="login-panel text-center card panel-default align-middle">
-                            <div className="card-header bg-primary text-white">
-                                <h3 className="card-title">Sign In</h3>
-                            </div>
-                            <div className="card-text">
-                                <MyForm validate={this.validate} form='logIn' onSubmit={this.submit}>
-                                    <Field
-                                        name="userName"
-                                        component={Input}
-                                        placeholder="username"
-                                    />
-                                    <Field name="password" component={Input} placeholder="password" type="password" />
+            <div>
+                <div className="row">
+                    <div className="col s6 offset-s3">
+                        <div className="card ">
 
-                                    <button type="submit" className="btn btn-outline-success float-right">Submit</button>
-                                    <button onClick={this.register} type="button" className="btn btn-outline-primary float-left">Register</button>
-                                </MyForm>
+                            <div className="card-content">
+                                <h3 className="card-title center">Sign In</h3>
+
+                                <div className="card-text">
+                                    <MyForm validate={this.validate} form='logIn' onSubmit={this.submit}>
+                                        <div className="row">
+                                            <div className="input-field">
+                                                <Field name="userName" component={Input} id="username" type="text" />
+                                            </div>
+                                        </div>
+                                        <div className="row">
+                                            <div className="input-field">
+                                                <Field name="password" component={Input} id="password" type="password" />
+                                            </div>
+                                        </div>
+                                        <div className="row">
+                                            <div className="col s12">
+                                                <div className="card-action">
+                                                    <button type="submit" className="btn green ligthen-2 right">Sign In</button>
+                                                    <button onClick={this.register} type="button" className="btn blue lighten-2">Register</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </MyForm>
+                                </div>
                             </div>
+
                         </div>
                     </div>
                     {this.state.redirect}

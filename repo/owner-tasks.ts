@@ -38,6 +38,11 @@ async function getOwner(id: number) {
     return owner;
 }
 
+async function verifyUse(column: any, value = '') {
+
+    return await knex('owner').select('hourlyRate').where(column, value).first();
+}
+
 
 export {
     addOwner,
@@ -45,5 +50,6 @@ export {
     getCurrentClients,
     getOwner,
     updateOwner,
-    getAllClients
+    getAllClients,
+    verifyUse
 }

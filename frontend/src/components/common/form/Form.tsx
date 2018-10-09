@@ -11,20 +11,11 @@ interface Errors {
 
 type AllFormProps = FormProps & any & ConfigProps;
 
-
-const submit = async (values: any) => {
-    await alert(JSON.stringify(values));
-}
-
-
-
-
-
 class MyForm extends React.Component<AllFormProps, any> {
 
     render() {
         return (
-            <form className='form' onSubmit={this.props.handleSubmit(this.props.submit)}>
+            <form className="form" onSubmit={this.props.handleSubmit(this.props.onSubmit)}>
                 {this.props.children}
                 <div>
 
@@ -37,4 +28,4 @@ class MyForm extends React.Component<AllFormProps, any> {
 export default reduxForm({
     // <--- validation function given to redux-form
 
-})(MyForm)
+})( MyForm<<>>)
